@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 
-const https = require("https");
+const http = require("http");
 const path = require("path");
 const bodyParser = require("body-parser");
 const api = require("./routes/api");
 const cors = require("cors");
-const server = https.createServer(app);
+const server = http.createServer(app);
 
 // requiring socket library
 const socket = require("socket.io");
@@ -25,7 +25,9 @@ io.on("connection", (socket) => {
 
   // only emits to the single/current client
   // this message should popup if it connects to the front end
-  socket.emit("message", "Welcome to the chat!");
+  socket.on("newUser", () => {
+    socket.emit("message", "Clippers blew a 3-1 lead!!");
+  });
 
   // emit to everyone except the user
   // Broadcast when a user connects

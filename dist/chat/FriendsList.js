@@ -26,7 +26,8 @@ const FriendsList = () => {
         friends: "",
     });
     return (react_1.default.createElement("div", { id: "friends-list" },
-        react_1.default.createElement("ul", null,
-            react_1.default.createElement("li", null, "Marcus Valverde"))));
+        react_1.default.createElement("ul", { className: "friends" },
+            react_1.default.createElement("li", { className: "friend-name" }, "Marcus Valverde"),
+            react_1.default.createElement("li", { className: "friend-name" }, "Cherie Zhong"))));
 };
 exports.default = FriendsList;

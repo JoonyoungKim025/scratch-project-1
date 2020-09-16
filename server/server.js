@@ -23,19 +23,22 @@ io.on("connection", (socket) => {
   // when socket has connected we log New WS Connection
   console.log("New WS Connection...", socket.id);
 
+  // only emits to the single/current client
+  // this message should popup if it connects to the front end
+  socket.on("newUser", () => {
+    socket.emit("message", "Welcome new user!");
+  });
+
   // emit to everyone except the user
   // Broadcast when a user connects
   socket.broadcast.emit("message", "A user has joined the chat!");
-
-   // only emits to the single/current client
-  // this message should popup if it connects to the front end
-  socket.emit("message", "Welcome to the chat!");
 
   // Listen for chat: receiving message.
   // Anonymous function deals with what to do with the received message
   socket.on("chatMessage", (msg) => {
     // send back message emitted by the client to everybody else
-    io.emit("message", msg);
+    // USE io.emit("message", msg); if you want to see your own msg
+    socket.broadcast.emit("message", msg);
   });
 
   // Runs when client disconnects

@@ -43,6 +43,13 @@ const ChatWindow: React.FC = () => {
   //event handler to handle clicking the submit button (does nothing currently)
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
+   // send inputted message to server
+    const msg = data.message;
+    socket.emit("chatMessage", msg);
+    setData({
+      message: "",
+      username: "",
+    })
   };
 
   //build an arrary of div elements to be rendered

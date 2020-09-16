@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
   // only emits to the single/current client
   // this message should popup if it connects to the front end
   socket.on("newUser", () => {
-    socket.emit("message", "Clippers blew a 3-1 lead!!");
+    socket.emit("message", "Welcome new user!");
   });
 
   // emit to everyone except the user
@@ -37,7 +37,8 @@ io.on("connection", (socket) => {
   // Anonymous function deals with what to do with the received message
   socket.on("chatMessage", (msg) => {
     // send back message emitted by the client to everybody else
-    io.emit("message", msg);
+    // USE io.emit("message", msg); if you want to see your own msg
+    socket.broadcast.emit("message", msg);
   });
 
   // Runs when client disconnects

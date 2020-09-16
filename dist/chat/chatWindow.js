@@ -20,28 +20,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const io = require('socket.io-client');
+const io = require("socket.io-client");
 //set up our socket
-const socket = io('http://localhost:5000');
+const socket = io("http://localhost:5000");
 const ChatWindow = () => {
     //piece of state holding a message
     const [data, setData] = react_1.useState({
-        message: '',
-        username: ''
+        message: "",
+        username: "",
     });
     const [messagesArr, setMessagesArr] = react_1.useState([]);
+    // add some sort of emitter that tells the backend that a client has connected
+    react_1.useEffect(() => {
+        socket.emit("newUser", "LALALALALALA");
+    });
     //on incoming message add to messageArr and render new messages
     react_1.useEffect(() => {
         socket.on("message", (payload) => {
             setMessagesArr([...messagesArr, payload]);
         });
-    }, []);
+        console.log(messagesArr);
+    }, [messagesArr]);
     //event handler to update message in state
     const handleChange = (e) => {
         const { value } = e.target;
         setData((prevState) => ({
             ...prevState,
-            message: value
+            message: value,
         }));
     };
     //event handler to handle clicking the submit button (does nothing currently)
@@ -49,7 +54,7 @@ const ChatWindow = () => {
         event.preventDefault();
     };
     //build an arrary of div elements to be rendered
-    const renderArr = messagesArr.map(el => react_1.default.createElement("div", { className: "message" }, el));
+    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el)));
     return (react_1.default.createElement("div", { id: "chatContainer" },
         react_1.default.createElement("div", { id: "chatWindow" }, renderArr),
         react_1.default.createElement("div", { id: "inputContainer" },

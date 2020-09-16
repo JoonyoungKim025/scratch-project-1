@@ -25,7 +25,9 @@ io.on("connection", (socket) => {
 
   // only emits to the single/current client
   // this message should popup if it connects to the front end
-  socket.emit("message", "Welcome to the chat!");
+  socket.on("newUser", () => {
+    socket.emit("message", "Clippers blew a 3-1 lead!!");
+  });
 
   // emit to everyone except the user
   // Broadcast when a user connects

@@ -37,7 +37,11 @@ const ChatWindow = () => {
     //on incoming message add to messageArr and render new messages
     react_1.useEffect(() => {
         socket.on("message", (payload) => {
-            setMessagesArr([...messagesArr, payload]);
+            const msgObj = {
+                message: payload,
+                fromClient: false,
+            };
+            setMessagesArr([...messagesArr, msgObj]);
         });
         console.log(messagesArr);
     }, [messagesArr]);
@@ -61,7 +65,7 @@ const ChatWindow = () => {
         });
     };
     //build an arrary of div elements to be rendered
-    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el)));
+    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el.message)));
     return (react_1.default.createElement("div", { id: "chatContainer" },
         react_1.default.createElement("div", { id: "chatWindow" }, renderArr),
         react_1.default.createElement("div", { id: "inputContainer" },

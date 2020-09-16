@@ -33,11 +33,15 @@ const ChatWindow = () => {
     // add some sort of emitter that tells the backend that a client has connected
     react_1.useEffect(() => {
         socket.emit("newUser", "LALALALALALA");
-    });
+    }, []);
     //on incoming message add to messageArr and render new messages
     react_1.useEffect(() => {
         socket.on("message", (payload) => {
-            setMessagesArr([...messagesArr, payload]);
+            const msgObj = {
+                message: payload,
+                fromClient: false,
+            };
+            setMessagesArr([...messagesArr, msgObj]);
         });
         console.log(messagesArr);
     }, [messagesArr]);
@@ -52,9 +56,16 @@ const ChatWindow = () => {
     //event handler to handle clicking the submit button (does nothing currently)
     const handleSubmit = (event) => {
         event.preventDefault();
+        // send inputted message to server
+        const msg = data.message;
+        socket.emit("chatMessage", msg);
+        setData({
+            message: "",
+            username: "",
+        });
     };
     //build an arrary of div elements to be rendered
-    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el)));
+    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el.message)));
     return (react_1.default.createElement("div", { id: "chatContainer" },
         react_1.default.createElement("div", { id: "chatWindow" }, renderArr),
         react_1.default.createElement("div", { id: "inputContainer" },

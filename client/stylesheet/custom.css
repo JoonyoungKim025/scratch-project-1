@@ -220,3 +220,45 @@ input[type=reset] {
 	display: flex;
 	flex-direction: column;
 }
+
+
+#friends-list {
+	position: relative;
+	float: right;
+	width: 250px;
+	min-height: 100vh;
+	background-color: white;
+	padding: 0;
+	margin: 0;
+}
+
+.friends {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 15px;
+	width: 100%;
+}
+
+.friend-name {
+	border: black 1px solid;
+
+nav {
+	background-color: #1eefd7;
+	height: 40px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+#go_to_chat {
+	position: fixed;
+	top: 0;
+}
+
+#go_to_search {
+	position: fixed;
+	top: 0;
+	right: 0;
+
+}

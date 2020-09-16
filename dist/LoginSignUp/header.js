@@ -11,7 +11,9 @@ const react_1 = __importDefault(require("react"));
 const Header = () => {
     return (
     // Bootstrap Navbar
-    react_1.default.createElement("nav", null,
+    react_1.default.createElement("div", null,
+        react_1.default.createElement("div", null,
+            react_1.default.createElement("img", { id: "computer_img", src: "http://localhost:8080/client/assets/computer.png", alt: "" })),
         react_1.default.createElement("div", { className: "nav-bar-div" },
             react_1.default.createElement("span", { id: "gitConnected" }, "gitConnected.")),
         react_1.default.createElement("div", { id: "taglineContainer" },

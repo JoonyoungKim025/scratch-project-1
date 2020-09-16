@@ -12,7 +12,7 @@ module.exports = {
   devtool: "#source-map",
   devServer: {
     publicPath: "/build/",
-    contentBase: path.resolve(__dirname, "../scratch-project-1"),
+    contentBase: path.resolve(__dirname, "../scratch-project"),
     proxy: {
       "/api": "http://localhost:5000",
     },

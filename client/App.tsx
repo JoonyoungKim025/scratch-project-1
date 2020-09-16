@@ -2,12 +2,14 @@
 import React, { useState } from "react";
 import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
+import ChatPage from "./chat/chatPage"
 // import UserProfile from "./userProfile/userProfile";
 // import Search from "./searchResult/search";
 import Login from "./loginSignUp/login";
 
 interface componentRenderingInfo {
-	status: string;
+	status?: string;
+	chat?: string;
 }
 
 // Setting app as functional component
@@ -15,7 +17,10 @@ const App: React.FC = () => {
 
 	const [componentRendering, setComponentRendering] = useState<componentRenderingInfo> ({
 		status: "OFF",
+		chat: "OFF"
 	});
+
+
 
 	const handleSubmitOne = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
@@ -27,13 +32,28 @@ const App: React.FC = () => {
 	const handleSubmitTwo = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
 		setComponentRendering({
-			status: "LOGIN"
+			status: "LOGIN",
+		});
+	};
+
+	const handleSubmitThree = (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault();
+		setComponentRendering({
+			chat: "ON"
 		});
 	};
 	
   return (
-    <div>
-      <Header />
+		<div className="app_div">
+			{(componentRendering.chat === "OFF") ? (
+			<div>
+			<button
+			onClick={handleSubmitThree}>
+				Go to Chat</button>
+    	<div>
+				<Header />
+			</div>
+		<div>
 
 			{(componentRendering.status === "OFF") ? (
 				<div id="buttonGroup">
@@ -66,12 +86,13 @@ const App: React.FC = () => {
 					</div>
 				) : null}
 
-			</div>
-    
-      
-      
-    </div>
-  );
+				</div>
+          
+    	</div>
+		</div>
+			) : <ChatPage />}
+		</div>
+	);
 };
 
 export default App;

@@ -71,9 +71,9 @@ const ChatWindow: React.FC = () => {
   //build an arrary of div elements to be rendered
   const renderArr = messagesArr.map((el) => {
     if (el.fromClient) {
-      return <div className="clientMessage">fromClient: {el.message}</div>
+      return <div><p className="clientMessage">{el.message}</p></div>
     } else {
-      return <div className="socketMessage">fromSocket: {el.message}</div>
+      return <div><p className="fromMsg">from user: </p><p className="socketMessage">{el.message}</p></div>
     }
     
   });

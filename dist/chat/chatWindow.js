@@ -33,7 +33,7 @@ const ChatWindow = () => {
     // add some sort of emitter that tells the backend that a client has connected
     react_1.useEffect(() => {
         socket.emit("newUser", "LALALALALALA");
-    });
+    }, []);
     //on incoming message add to messageArr and render new messages
     react_1.useEffect(() => {
         socket.on("message", (payload) => {

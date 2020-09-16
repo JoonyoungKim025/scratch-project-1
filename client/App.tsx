@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
 import ChatPage from "./chat/chatPage"
+import NavBar from "./navbar/navbar"
 // import UserProfile from "./userProfile/userProfile";
 // import Search from "./searchResult/search";
 import Login from "./loginSignUp/login";
@@ -45,11 +46,18 @@ const App: React.FC = () => {
 	
   return (
 		<div className="app_div">
+			<NavBar />
+			<button
+				id="go_to_search">
+				Search
+			</button>
 			{(componentRendering.chat === "OFF") ? (
 			<div>
-			<button
-			onClick={handleSubmitThree}>
-				Go to Chat</button>
+				<button
+				id="go_to_chat"
+				onClick={handleSubmitThree}>
+				Go to Chat
+				</button>
     	<div>
 				<Header />
 			</div>

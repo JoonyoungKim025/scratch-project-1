@@ -220,3 +220,22 @@ input[type=reset] {
 	display: flex;
 	flex-direction: column;
 }
+
+nav {
+	background-color: #1eefd7;
+	height: 40px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+#go_to_chat {
+	position: fixed;
+	top: 0;
+}
+
+#go_to_search {
+	position: fixed;
+	top: 0;
+	right: 0;
+}

@@ -59,13 +59,29 @@ const ChatWindow = () => {
         // send inputted message to server
         const msg = data.message;
         socket.emit("chatMessage", msg);
+        const msgObj = {
+            message: msg,
+            fromClient: true,
+        };
+        setMessagesArr([...messagesArr, msgObj]);
         setData({
             message: "",
             username: "",
         });
     };
     //build an arrary of div elements to be rendered
-    const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el.message)));
+    const renderArr = messagesArr.map((el) => {
+        if (el.fromClient) {
+            return react_1.default.createElement("div", { className: "clientMessage" },
+                "fromClient: ",
+                el.message);
+        }
+        else {
+            return react_1.default.createElement("div", { className: "socketMessage" },
+                "fromSocket: ",
+                el.message);
+        }
+    });
     return (react_1.default.createElement("div", { id: "chatContainer" },
         react_1.default.createElement("div", { id: "chatWindow" }, renderArr),
         react_1.default.createElement("div", { id: "inputContainer" },

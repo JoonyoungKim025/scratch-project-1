@@ -36,11 +36,18 @@ const App = () => {
         status: "OFF",
         chat: "OFF",
     });
+    // const handleSubmitOne = (event: React.MouseEvent<HTMLElement>) => {
+    //   event.preventDefault();
+    //   setComponentRendering({
+    //     status: "SIGNUP",
+    //   });
+    // };
     const handleSubmitOne = (event) => {
         event.preventDefault();
-        setComponentRendering({
+        setComponentRendering((prevState) => ({
+            ...prevState,
             status: "SIGNUP",
-        });
+        }));
     };
     const handleSubmitTwo = (event) => {
         event.preventDefault();

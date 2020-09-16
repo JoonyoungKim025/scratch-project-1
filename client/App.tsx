@@ -24,18 +24,27 @@ const App: React.FC = () => {
     chat: "OFF",
   });
 
+  // const handleSubmitOne = (event: React.MouseEvent<HTMLElement>) => {
+  //   event.preventDefault();
+  //   setComponentRendering({
+  //     status: "SIGNUP",
+  //   });
+  // };
+
   const handleSubmitOne = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    setComponentRendering({
+    setComponentRendering((prevState) => ({
+      ...prevState,
       status: "SIGNUP",
-    });
+    }));
   };
 
   const handleSubmitTwo = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    setComponentRendering({
+    setComponentRendering((prevState) => ({
+      ...prevState,
       status: "LOGIN",
-    });
+    }));
   };
 
   const handleSubmitThree = (event: React.MouseEvent<HTMLElement>) => {

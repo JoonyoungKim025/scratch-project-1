@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 
-const https = require("https");
+const http = require("http");
 const path = require("path");
 const bodyParser = require("body-parser");
 const api = require("./routes/api");
 const cors = require("cors");
-const server = https.createServer(app);
+const server = http.createServer(app);
 
 // requiring socket library
 const socket = require("socket.io");
@@ -23,13 +23,13 @@ io.on("connection", (socket) => {
   // when socket has connected we log New WS Connection
   console.log("New WS Connection...", socket.id);
 
-  // only emits to the single/current client
-  // this message should popup if it connects to the front end
-  socket.emit("message", "Welcome to the chat!");
-
   // emit to everyone except the user
   // Broadcast when a user connects
   socket.broadcast.emit("message", "A user has joined the chat!");
+
+   // only emits to the single/current client
+  // this message should popup if it connects to the front end
+  socket.emit("message", "Welcome to the chat!");
 
   // Listen for chat: receiving message.
   // Anonymous function deals with what to do with the received message

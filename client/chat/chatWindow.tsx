@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 const io = require('socket.io-client');
 
 //set up our socket
-const socket = io('https://localhost:5000');
+const socket = io('http://localhost:5000');
 
 
 interface data{
@@ -25,7 +25,7 @@ const ChatWindow: React.FC = () => {
     socket.on("message", (payload:string) => {
       setMessagesArr([...messagesArr, payload]);
     })
-  }, []);
+  }, [messagesArr]);
   
   //event handler to update message in state
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +39,10 @@ const ChatWindow: React.FC = () => {
   //event handler to handle clicking the submit button (does nothing currently)
   const handleSubmit = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
+    // added by joon-testing
+    
+    socket.emit("chatMessage", 'hello');
+     
   };
 
   //build an arrary of div elements to be rendered

@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "developmnet",
+  mode: "development",
   entry: "./client/index.js",
   output: {
     path: path.resolve(__dirname, "build"),

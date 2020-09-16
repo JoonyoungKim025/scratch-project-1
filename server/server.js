@@ -10,9 +10,9 @@ const cors = require("cors");
 const server = https.createServer(app);
 
 // requiring socket library
-const socketIo = require("socket.io");
+const socket = require("socket.io");
 // apply socket IO to our server
-const io = socketIo(server);
+const io = socket(server);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,26 +21,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Socket Connection
 io.on("connection", (socket) => {
   // when socket has connected we log New WS Connection
-  console.log("New WS Connection...");
-
-  // emit to everyone except the user
-  // Broadcast when a user connects
-  socket.broadcast.emit("message", "A user has joined the chat!");
-
-  // Runs when client disconnects
-  socket.on("disconnect", () => {
-    // tells everybody
-    io.emit("message", " As user has left the chat");
-  });
+  console.log("New WS Connection...", socket.id);
 
   // only emits to the single/current client
   // this message should popup if it connects to the front end
   socket.emit("message", "Welcome to the chat!");
 
-  // Listen for chat
+  // emit to everyone except the user
+  // Broadcast when a user connects
+  socket.broadcast.emit("message", "A user has joined the chat!");
+
+  // Listen for chat: receiving message.
+  // Anonymous function deals with what to do with the received message
   socket.on("chatMessage", (msg) => {
-    // send back message emitted by the client back for display
+    // send back message emitted by the client to everybody else
     io.emit("message", msg);
+  });
+
+  // Runs when client disconnects
+  socket.on("disconnect", () => {
+    // tells everybody
+    io.emit("message", " As user has left the chat");
   });
 });
 

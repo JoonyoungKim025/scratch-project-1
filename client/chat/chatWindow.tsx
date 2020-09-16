@@ -1,3 +1,4 @@
+import { truncate } from "fs/promises";
 import React, { useState, useEffect } from "react";
 const io = require("socket.io-client");
 
@@ -9,6 +10,11 @@ interface data {
   username: string;
 }
 
+interface msgObj {
+  message: string;
+  fromClient: Boolean;
+}
+
 const ChatWindow: React.FC = () => {
   //piece of state holding a message
   const [data, setData] = useState<data>({
@@ -16,7 +22,7 @@ const ChatWindow: React.FC = () => {
     username: "",
   });
 
-  const [messagesArr, setMessagesArr] = useState<Array<string>>([]);
+  const [messagesArr, setMessagesArr] = useState<Array<msgObj>>([]);
 
   // add some sort of emitter that tells the backend that a client has connected
   useEffect(() => {
@@ -26,7 +32,11 @@ const ChatWindow: React.FC = () => {
   //on incoming message add to messageArr and render new messages
   useEffect(() => {
     socket.on("message", (payload: string) => {
-      setMessagesArr([...messagesArr, payload]);
+      const msgObj = {
+        message: payload,
+        fromClient: false,
+      }
+      setMessagesArr([...messagesArr, msgObj]);
     });
     console.log(messagesArr);
   }, [messagesArr]);
@@ -46,16 +56,27 @@ const ChatWindow: React.FC = () => {
    // send inputted message to server
     const msg = data.message;
     socket.emit("chatMessage", msg);
+    const msgObj = {
+      message: msg,
+      fromClient: true,
+    }
+    setMessagesArr([...messagesArr, msgObj]);
     setData({
       message: "",
       username: "",
     })
+    
   };
 
   //build an arrary of div elements to be rendered
-  const renderArr = messagesArr.map((el) => (
-    <div className="message">{el}</div>
-  ));
+  const renderArr = messagesArr.map((el) => {
+    if (el.fromClient) {
+      return <div className="clientMessage">fromClient: {el.message}</div>
+    } else {
+      return <div className="socketMessage">fromSocket: {el.message}</div>
+    }
+    
+  });
 
   return (
     <div id="chatContainer">

@@ -52,6 +52,13 @@ const ChatWindow = () => {
     //event handler to handle clicking the submit button (does nothing currently)
     const handleSubmit = (event) => {
         event.preventDefault();
+        // send inputted message to server
+        const msg = data.message;
+        socket.emit("chatMessage", msg);
+        setData({
+            message: "",
+            username: "",
+        });
     };
     //build an arrary of div elements to be rendered
     const renderArr = messagesArr.map((el) => (react_1.default.createElement("div", { className: "message" }, el)));

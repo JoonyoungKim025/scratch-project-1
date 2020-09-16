@@ -1,6 +1,6 @@
 import React from "react";
-import FriendsList from "./FriendsList.tsx";
-import chatWindow from './chatWindow';
+import FriendsList from './FriendsList';
+import ChatWindow from './chatWindow';
 
 
 interface chatState {

@@ -12,7 +12,7 @@ body {
 
 img {
 	margin: 100px auto 0 auto;
-	display: flex;
+	display: block;
 }
 
 #gitConnected  {
@@ -28,11 +28,6 @@ img {
 	font-family: 'Rubik Mono One', sans-serif;
 	color: #ffffff;
 	margin: 0 auto;
-}
-
-nav {
-	background-image: rgba(0, 0, 0, 0);
-	height: 70px;
 }
 
 .nav-bar-div {
@@ -218,5 +213,52 @@ input[type=reset] {
 	flex-direction: column;
 	justify-content: center;
 	width: 200px;
-	margin: 80px auto 0 auto;
+	margin: 40px auto 0 auto;
+}
+
+.app_div {
+	display: flex;
+	flex-direction: column;
+}
+
+
+#friends-list {
+	position: relative;
+	float: right;
+	width: 250px;
+	min-height: 100vh;
+	background-color: white;
+	padding: 0;
+	margin: 0;
+}
+
+.friends {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 15px;
+	width: 100%;
+}
+
+.friend-name {
+	border: black 1px solid;
+
+nav {
+	background-color: #1eefd7;
+	height: 40px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+#go_to_chat {
+	position: fixed;
+	top: 0;
+}
+
+#go_to_search {
+	position: fixed;
+	top: 0;
+	right: 0;
+
 }

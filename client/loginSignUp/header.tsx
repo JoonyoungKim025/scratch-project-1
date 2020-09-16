@@ -7,14 +7,17 @@ import React from "react";
 const Header: React.FC = () => {
   return (
     // Bootstrap Navbar
-    <nav>
+    <div>
+      <div>
+			  <img id="computer_img" src="http://localhost:8080/client/assets/computer.png" alt=""/>
+		  </div>
       <div className="nav-bar-div">
         <span id="gitConnected">gitConnected.</span>
       </div>
 			<div id="taglineContainer">
 				<p id="tagline">1-on-1 Networking for Tech Professionals</p>
 			</div>
-    </nav>
+    </div>
   );
 };
 export default Header;

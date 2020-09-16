@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 const io = require('socket.io-client');
 
 //set up our socket
-const socket = io('https://localhost:5000');
+const socket = io('http://localhost:5000');
 
 
 interface data{

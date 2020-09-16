@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const PORT = 5000;
 
-const https = require("https");
+const http = require("http");
 const path = require("path");
 const bodyParser = require("body-parser");
 const api = require("./routes/api");
 const cors = require("cors");
-const server = https.createServer(app);
+const server = http.createServer(app);
 
 // requiring socket library
 const socket = require("socket.io");

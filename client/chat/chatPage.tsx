@@ -1,6 +1,5 @@
 import React from "react";
 import chatWindow from './chatWindow';
-import ChatWindow from "./chatWindow";
 
 interface chatState {
   message: string

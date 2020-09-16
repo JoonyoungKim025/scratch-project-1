@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 import Header from "./loginSignUp/header";
 import RegistrationForm from "./loginSignUp/register";
-import ChatPage from "./chat/chatPage";
+
+import ChatPage from "./chat/chatPage"
+import NavBar from "./navbar/navbar"
+
 // import UserProfile from "./userProfile/userProfile";
 // import Search from "./searchResult/search";
 import Login from "./loginSignUp/login";
@@ -43,6 +46,7 @@ const App: React.FC = () => {
   };
 
   return (
+
     <div className="app_div">
       {componentRendering.chat === "OFF" ? (
         <div>

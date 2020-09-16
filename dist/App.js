@@ -27,6 +27,7 @@ const react_1 = __importStar(require("react"));
 const header_1 = __importDefault(require("./loginSignUp/header"));
 const register_1 = __importDefault(require("./loginSignUp/register"));
 const chatPage_1 = __importDefault(require("./chat/chatPage"));
+const navbar_1 = __importDefault(require("./navbar/navbar"));
 // import UserProfile from "./userProfile/userProfile";
 // import Search from "./searchResult/search";
 const login_1 = __importDefault(require("./loginSignUp/login"));
@@ -54,6 +55,7 @@ const App = () => {
             chat: "ON",
         });
     };
+
     return (react_1.default.createElement("div", { className: "app_div" }, componentRendering.chat === "OFF" ? (react_1.default.createElement("div", null,
         react_1.default.createElement("button", { onClick: handleSubmitThree }, "Go to Chat"),
         react_1.default.createElement("div", null,
@@ -67,5 +69,7 @@ const App = () => {
                     react_1.default.createElement(login_1.default, null))) : null,
                 componentRendering.status === "SIGNUP" ? (react_1.default.createElement("div", { className: "signUp" },
                     react_1.default.createElement(register_1.default, null))) : null)))) : (react_1.default.createElement(chatPage_1.default, null))));
+
+  
 };
 exports.default = App;

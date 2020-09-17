@@ -29,7 +29,11 @@ const loggedIn_1 = __importDefault(require("./containers/loggedIn"));
 // Setting app as functional component
 const App = () => {
     const [loggedIn, setLoggedIn] = react_1.useState(false);
+    const set = (event) => {
+        event.preventDefault();
+        setLoggedIn(!loggedIn);
+    };
     return (react_1.default.createElement("div", { className: "app_div" }, loggedIn === false ?
-        react_1.default.createElement(notLoggedIn_1.default, null) : react_1.default.createElement(loggedIn_1.default, null)));
+        react_1.default.createElement(notLoggedIn_1.default, { set: set }) : react_1.default.createElement(loggedIn_1.default, Object.assign({}, setLoggedIn))));
 };
 exports.default = App;

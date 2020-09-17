@@ -26,7 +26,7 @@ const react_1 = __importStar(require("react"));
 const login_1 = __importDefault(require("../loginSignUp/login"));
 const header_1 = __importDefault(require("../loginSignUp/header"));
 const register_1 = __importDefault(require("../loginSignUp/register"));
-const NotLoggedIn = () => {
+const NotLoggedIn = (props) => {
     //this container will render either Login or Signup/Register
     const [componentRendering, setComponentRendering] = react_1.useState({
         status: "OFF",
@@ -45,7 +45,8 @@ const NotLoggedIn = () => {
     };
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("div", null,
-            react_1.default.createElement(header_1.default, null)),
+            react_1.default.createElement(header_1.default, null),
+            react_1.default.createElement("button", { onClick: props.set }, "button")),
         componentRendering.status === "OFF" ?
             react_1.default.createElement("div", null,
                 react_1.default.createElement("div", { id: "buttonGroup" },

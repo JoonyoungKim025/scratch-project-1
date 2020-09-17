@@ -7,9 +7,12 @@ interface componentRenderingInfo {
   status: string;
 }
 
-const NotLoggedIn : React.FC = () => {
-  //this container will render either Login or Signup/Register
+type props = {
+  set: (event: React.MouseEvent<HTMLElement>) => void;
+}
 
+const NotLoggedIn : React.FC<props> = (props) => {
+  //this container will render either Login or Signup/Register
   const [componentRendering, setComponentRendering] = useState<
     componentRenderingInfo
   >({
@@ -34,6 +37,7 @@ const NotLoggedIn : React.FC = () => {
     <div>
       <div>
         <Header />
+        <button onClick={props.set}>button</button>
       </div>
 
       {componentRendering.status === "OFF" ? 

@@ -18,13 +18,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const search_1 = __importDefault(require("../searchResult/search"));
-const Login = () => {
+const Login = (props) => {
     const [loginInfo, setLogin] = react_1.useState({
         email: "",
         password: "",
@@ -46,8 +42,9 @@ const Login = () => {
         setComponentRendering({
             status: "ON",
         });
+        props.set1;
     };
-    return (react_1.default.createElement("div", { className: "login" }, (componentRendering.status === "ON") ? react_1.default.createElement(search_1.default, null) :
+    return (react_1.default.createElement("div", { className: "login" },
         react_1.default.createElement("div", null,
             react_1.default.createElement("form", { className: "loginSignUpFields" },
                 react_1.default.createElement("div", null,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Login from "../loginSignUp/login"
-import Header from "../loginSignUp/header"
-import RegistrationForm from "../loginSignUp/register"
+import Login from "../loginSignUp/login";
+import Header from "../loginSignUp/header";
+import RegistrationForm from "../loginSignUp/register";
 
 interface componentRenderingInfo {
   status: string;
@@ -9,9 +9,9 @@ interface componentRenderingInfo {
 
 type props = {
   set: (event: React.MouseEvent<HTMLElement>) => void;
-}
+};
 
-const NotLoggedIn : React.FC<props> = (props) => {
+const NotLoggedIn: React.FC<props> = (props) => {
   //this container will render either Login or Signup/Register
   const [componentRendering, setComponentRendering] = useState<
     componentRenderingInfo
@@ -40,45 +40,34 @@ const NotLoggedIn : React.FC<props> = (props) => {
         <button onClick={props.set}>button</button>
       </div>
 
-      {componentRendering.status === "OFF" ? 
-      <div>
-        <div id="buttonGroup">
-            <button
-              className="loginSignUpButtons"
-              onClick={goToSignup}
-              >
+      {componentRendering.status === "OFF" ? (
+        <div>
+          <div id="buttonGroup">
+            <button className="loginSignUpButtons" onClick={goToSignup}>
               Signup
             </button>
-            <button
-              className="loginSignUpButtons"
-              onClick={goToLogin}
-              >
+            <button className="loginSignUpButtons" onClick={goToLogin}>
               Login
             </button>
           </div>
-        </div> : null}
+        </div>
+      ) : null}
 
       <div id="loginSignUpContainer">
-      {componentRendering.status === "LOGIN" ?
+        {componentRendering.status === "LOGIN" ? (
           <div className="logIn">
-            <Login />
-          </div> : null}
+            <Login set1={props.set} />
+          </div>
+        ) : null}
 
-      {componentRendering.status === "SIGNUP" ?
+        {componentRendering.status === "SIGNUP" ? (
           <div className="signUp">
-            <RegistrationForm />
-          </div> : null}
-
+            <RegistrationForm set1={props.set} />
+          </div>
+        ) : null}
+      </div>
     </div>
-    </div>
-  )
-}
-
-
-
-
-
-
-
+  );
+};
 
 export default NotLoggedIn;

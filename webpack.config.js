@@ -34,7 +34,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.tsx?$/,
+        test: { test: /\.tsx?$/, exclude: /\.test.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
         use: "ts-loader",
         exclude: /node_modules/,
       },

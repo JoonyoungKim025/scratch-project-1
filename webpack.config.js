@@ -12,7 +12,7 @@ module.exports = {
   devtool: "#source-map",
   devServer: {
     publicPath: "/build/",
-    contentBase: path.resolve(__dirname, "../Iteration Project"),
+    contentBase: path.resolve(__dirname, "../scratch-project-1"),
     proxy: {
       "/api": "http://localhost:5000",
     },
@@ -34,7 +34,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: { test: /\.tsx?$/, exclude: /\.test.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
+        test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },

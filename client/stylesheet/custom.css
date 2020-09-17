@@ -242,8 +242,9 @@ input[type=reset] {
 
 .friend-name {
 	border: black 1px solid;
+}
 
-nav {
+.navbar {
 	background-color: #1eefd7;
 	height: 40px;
 	position: fixed;
@@ -251,9 +252,10 @@ nav {
 	width: 100%;
 }
 
-#go_to_chat {
+#chat_button {
 	position: fixed;
 	top: 0;
+	z-index: 1;
 }
 
 #go_to_search {

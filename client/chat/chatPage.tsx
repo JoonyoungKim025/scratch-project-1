@@ -11,7 +11,6 @@ const ChatPage: React.FC = () => {
   return (
     <div className="chat_page">
       <h1>Chat Page</h1>
-      <FriendsList />
       <ChatWindow/>
     </div>
   )

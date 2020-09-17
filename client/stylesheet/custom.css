@@ -272,7 +272,33 @@ nav {
  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+/* copy */
 .socketMessage {
+	background-color: #c0fff8;
+	width: 50%;
+	margin-right: auto;
+}
+
+.clientMessage {
+	background-color: #fff;
+	margin-left: auto;
+	width: 50%;
+}
+
+.chat_page {
+	font-family: 'Rubik Mono One', sans-serif;
+}
+
+#chatWindow {
+	border: 1px solid white;
+	display: flex;
+	flex-direction: column;
+	height: 50rem;
+	overflow-y: auto;
+}
+/* copy */
+
+/* .socketMessage {
 	background-color: #c0fff8;
 }
 
@@ -285,7 +311,7 @@ nav {
 	border: 1px solid white;
 	height: calc(100vh - 100px);
 	width: calc(100vw - 250px);
-}
+} */
 
 .fromMsg {
 	margin: 15px;

@@ -226,7 +226,7 @@ input[type=reset] {
 	position: relative;
 	float: right;
 	width: 250px;
-	min-height: 100vh;
+	height: calc(100vh - 100px);
 	background-color: white;
 	padding: 0;
 	margin: 0;
@@ -242,6 +242,7 @@ input[type=reset] {
 
 .friend-name {
 	border: black 1px solid;
+}
 
 nav {
 	background-color: #1eefd7;
@@ -261,4 +262,32 @@ nav {
 	top: 0;
 	right: 0;
 
+}
+
+.clientMessage, .socketMessage {
+ border-radius: 15px;
+ padding: 10px;
+ margin: 15px;
+ max-width: 500px;
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.socketMessage {
+	background-color: #c0fff8;
+}
+
+.clientMessage {
+	background-color: #fff;
+	margin-left: 1300px;
+}
+
+#chatWindow {
+	border: 1px solid white;
+	height: calc(100vh - 100px);
+	width: calc(100vw - 250px);
+}
+
+.fromMsg {
+	margin: 15px;
+	color: white;
 }

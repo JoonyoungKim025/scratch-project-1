@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./client/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
@@ -12,7 +12,7 @@ module.exports = {
   devtool: "#source-map",
   devServer: {
     publicPath: "/build/",
-    contentBase: path.resolve(__dirname, "../scratch-project"),
+    contentBase: path.resolve(__dirname, "../Iteration Project"),
     proxy: {
       "/api": "http://localhost:5000",
     },

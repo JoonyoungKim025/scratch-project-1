@@ -58,16 +58,16 @@ const RegistrationForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setComponentRendering({
-            status: "ON"
+            status: "ON",
         });
+        props.set1;
     };
-    return (react_1.default.createElement("div", { className: "signup" }, (componentRendering.status === "ON") ? react_1.default.createElement(userProfile_1.default, null) :
-        react_1.default.createElement("div", null,
-            react_1.default.createElement("form", { className: "loginSignUpFields" },
-                react_1.default.createElement("input", { type: "email", id: "email", placeholder: "Enter email", value: signUp.email, onChange: handleChange }),
-                react_1.default.createElement("div", null,
-                    react_1.default.createElement("input", { type: "password", id: "password", placeholder: "Enter Password", value: signUp.password, onChange: handleChange })),
-                react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, className: "loginSignUpButtons" }, "Register"),
-                console.log(signUp)))));
+    return (react_1.default.createElement("div", { className: "signup" }, componentRendering.status === "ON" ? (react_1.default.createElement(userProfile_1.default, null)) : (react_1.default.createElement("div", null,
+        react_1.default.createElement("form", { className: "loginSignUpFields" },
+            react_1.default.createElement("input", { type: "email", id: "email", placeholder: "Enter email", value: signUp.email, onChange: handleChange }),
+            react_1.default.createElement("div", null,
+                react_1.default.createElement("input", { type: "password", id: "password", placeholder: "Enter Password", value: signUp.password, onChange: handleChange })),
+            react_1.default.createElement("button", { type: "submit", onClick: handleSubmit, className: "loginSignUpButtons" }, "Register"),
+            console.log(signUp))))));
 };
 exports.default = RegistrationForm;

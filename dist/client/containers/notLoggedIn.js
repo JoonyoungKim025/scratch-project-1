@@ -47,17 +47,14 @@ const NotLoggedIn = (props) => {
         react_1.default.createElement("div", null,
             react_1.default.createElement(header_1.default, null),
             react_1.default.createElement("button", { onClick: props.set }, "button")),
-        componentRendering.status === "OFF" ?
-            react_1.default.createElement("div", null,
-                react_1.default.createElement("div", { id: "buttonGroup" },
-                    react_1.default.createElement("button", { className: "loginSignUpButtons", onClick: goToSignup }, "Signup"),
-                    react_1.default.createElement("button", { className: "loginSignUpButtons", onClick: goToLogin }, "Login"))) : null,
+        componentRendering.status === "OFF" ? (react_1.default.createElement("div", null,
+            react_1.default.createElement("div", { id: "buttonGroup" },
+                react_1.default.createElement("button", { className: "loginSignUpButtons", onClick: goToSignup }, "Signup"),
+                react_1.default.createElement("button", { className: "loginSignUpButtons", onClick: goToLogin }, "Login")))) : null,
         react_1.default.createElement("div", { id: "loginSignUpContainer" },
-            componentRendering.status === "LOGIN" ?
-                react_1.default.createElement("div", { className: "logIn" },
-                    react_1.default.createElement(login_1.default, null)) : null,
-            componentRendering.status === "SIGNUP" ?
-                react_1.default.createElement("div", { className: "signUp" },
-                    react_1.default.createElement(register_1.default, null)) : null)));
+            componentRendering.status === "LOGIN" ? (react_1.default.createElement("div", { className: "logIn" },
+                react_1.default.createElement(login_1.default, { set1: props.set }))) : null,
+            componentRendering.status === "SIGNUP" ? (react_1.default.createElement("div", { className: "signUp" },
+                react_1.default.createElement(register_1.default, { set1: props.set }))) : null)));
 };
 exports.default = NotLoggedIn;

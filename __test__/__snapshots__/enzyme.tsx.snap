@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React unit tests Login renders correctly 1`] = `
+<div
+  className="login"
+>
+  <div>
+    <form
+      className="loginSignUpFields"
+    >
+      <div>
+        <input
+          id="email"
+          onChange={[Function]}
+          placeholder="Enter email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div>
+        <input
+          id="password"
+          onChange={[Function]}
+          placeholder="Enter password"
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        className="loginSignUpButtons"
+        onClick={[Function]}
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+`;
